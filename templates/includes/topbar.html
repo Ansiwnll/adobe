@@ -1,0 +1,43 @@
+<!-- Top header start -->
+<header class="top-header th-2 top-header-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-7">
+                <div class="list-inline">
+                    <a href="tel:+7 705-574-8796"><i class="fa fa-phone"></i>
+                        +7 771 535 8030
+                    </a>
+                    <a href="tel:info@carweb.cm"><i class="fa fa-envelope"></i>aika@web.com</a>
+                    <a href="tel:info@carweb.cm"><i class="fa fa-clock-o"></i>Пн - Сб: 8:00 утра - 18:30 вечера</a>
+                    <a href="tel:info@carweb.cm"><i class="fa fa-pin"></i>ул. Байконурова 19, Жезқазған</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-5">
+                <ul class="top-social-media pull-right">
+
+                  {% if user.is_authenticated %}
+                  <li>
+                      <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-xs"><i class="fa fa-tachometer"></i> Приборная панель</a>
+                  </li>
+
+                  <li>
+                      <a href="javascript:{document.getElementById('logout').submit()}" class="btn btn-danger btn-xs"><i class="fa fa-sign-out"></i> Выход</a>
+                      <form action="{% url 'logout' %}" id="logout" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden">
+                      </form>
+                  </li>
+                  {% else %}
+                    <li>
+                        <a href="{% url 'login' %}" class="btn btn-secondary btn-xs"><i class="fa fa-sign-in"></i> Войти</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'register' %}" class="btn btn-secondary btn-xs"><i class="fa fa-user-plus"></i> Регистрация</a>
+                    </li>
+                  {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Top header end -->
