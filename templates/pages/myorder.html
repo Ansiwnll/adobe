@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %} | Главная {% endblock %}
+{% block content %}
+
+{% load humanize %}
+{% load static %}
+
+<!-- Sub banner start -->
+<div class="sub-banner overview-bgi">
+    <div class="container breadcrumb-area">
+        <div class="breadcrumb-areas">
+            <h1>Оплата заказа</h1>
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li class="active">Оплата заказа</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub Banner end -->
+
+
+
+<head>
+
+</head>
+<style media="screen">
+
+.panel-title {display: inline;font-weight: bold;}
+.checkbox.pull-right { margin: 0; }
+.pl-ziro { padding-left: 0px; }
+</style>
+<br><br>
+<center><i>Это ПОДДЕЛЬНЫЙ ПЛАТЕЖ. Только для демонстрации</i></center>
+<br><br>
+<div class="container" style="text-align:center; padding-left: 220px; margin-right: 0;">
+    <div class="row ">
+        <div class="col-xs-12 col-md-4" style="height:500px; width:600px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Платежные реквизиты
+                    </h3>
+                    <div class="pull-right">
+                        <label>
+                            <input type="checkbox" />
+
+
+
+
+
+
+
+
+
+
+
+                            Запомнить
+                        </label>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form role="form" method="post">
+                    <div class="form-group">
+                        <label for="cardNumber">
+                            НОМЕР КАРТЫ</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="cardNumber" placeholder="xxxx xxxx xxxx xxxx"
+                                required autofocus />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4 pull-left">
+                            <div class="form-group">
+                                <label for="cvCode">
+                                    Месяц</label>
+                                
+                                    <input type="text" class="form-control" id="expityMonth" placeholder="MM - 02" required />
+                               
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4 col-md-4">
+                            <div class="form-group">
+                                <label for="expityMonth">
+                                    Дата</label>
+                               
+                                
+                               
+                                    <input type="text" class="form-control" id="expityYear" placeholder="YY - 23" required /></div>
+                            
+                        </div>
+                        <div class="col-xs-4 col-md-4 pull-right">
+                            <div class="form-group">
+                                <label for="cvCode">
+                                    CVС</label>
+                                <input type="password" class="form-control" id="cvCode" placeholder="CVС - xxx" required />
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            {% comment %} <ul class="nav nav-pills nav-stacked"> {% endcomment %}
+                {% comment %} <li class="active"><a href="#"><span class="badge pull-right">{{price}}</span> Final Payment</a> {% endcomment %}
+                {% comment %} </li> {% endcomment %}
+            {% comment %} </ul> {% endcomment %}
+            <br/>
+            <a href="payment_success" class="btn btn-outline-success btn-lg btn-block" role="button">Оплатить</a>
+        </div>
+   
+   
+    </div>
+</div>
+</center>
+
+{% endblock content %}

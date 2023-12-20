@@ -2,6 +2,8 @@ from django.db import models
 from datetime import datetime
 from ckeditor.fields import RichTextField
 from multiselectfield import MultiSelectField
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Car(models.Model):
@@ -72,7 +74,12 @@ class Car(models.Model):
 
 
 
-
+    STATUS =(
+        ('Pending','Pending'),
+        ('Order Confirmed','Order Confirmed'),
+        ('Out for Delivery','Out for Delivery'),
+        ('Delivered','Delivered'),
+    )
 
     # door_choices = (
         # ('2', '2'),
@@ -112,6 +119,69 @@ class Car(models.Model):
     # no_of_owners = models.CharField(max_length=100)
     is_featured = models.BooleanField(default=False)
     created_date = models.DateTimeField(default=datetime.now, blank=True)
+    # status=models.CharField(max_length=50,null=True,choices=STATUS)
+
+
+# Create your models here.
+class Customer(models.Model):
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    profile_pic= models.ImageField(upload_to='profile_pic/CustomerProfilePic/',null=True,blank=True)
+    address = models.CharField(max_length=40)
+    mobile = models.CharField(max_length=20,null=False)
+    @property
+    def get_name(self):
+        return self.user.first_name+" "+self.user.last_name
+    @property
+    def get_id(self):
+        return self.user.id
+    def __str__(self):
+        return self.user.first_name
+
+
+class Product(models.Model):
+    name=models.CharField(max_length=40)
+    product_image= models.ImageField(upload_to='product_image/',null=True,blank=True)
+    price = models.PositiveIntegerField()
+    description=models.CharField(max_length=40)
+    def __str__(self):
+        return self.name
+
+
+
+
+
+
+
+
+
+
+
+
+class Orders(models.Model):
+    STATUS =(
+        ('Pending','Pending'),
+        ('Order Confirmed','Order Confirmed'),
+        ('Out for Delivery','Out for Delivery'),
+        ('Delivered','Delivered'),
+    )
+    car=models.ForeignKey('Car', on_delete=models.CASCADE,null=True)
+    # product=models.ForeignKey('Product',on_delete=models.CASCADE,null=True)
+    # email = models.CharField(max_length=50,null=True)
+    # address = models.CharField(max_length=500,null=True)
+    # mobile = models.CharField(max_length=20,null=True)
+    # order_date= models.DateField(auto_now_add=True,null=True)
+    status=models.CharField(max_length=50,null=True,choices=STATUS)
+
+
+class Feedback(models.Model):
+    name=models.CharField(max_length=40)
+    feedback=models.CharField(max_length=500)
+    date= models.DateField(auto_now_add=True,null=True)
+    def __str__(self):
+        return self.name
+
+
+
 
     def __str__(self):
         return self.car_title

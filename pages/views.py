@@ -63,3 +63,13 @@ def contact(request):
         return redirect('contact')
 
     return render(request, 'pages/contact.html')
+
+
+
+def myorder(request):
+    return render(request, 'pages/myorder.html')  # замените 'myorder_template.html' на ваш шаблон
+
+
+
+def payment_success(request):
+    return render(request, 'pages/payment_success.html')  # замените 'myorder_template.html' на ваш шаблон

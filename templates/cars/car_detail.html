@@ -107,7 +107,7 @@
                     <div class="tabbing tabbing-box mb-40">
                         <ul class="nav nav-tabs" id="carTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active show" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="false">Обзор транспортного средства</a>
+                                <a class="nav-link active show" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="false">Обзор товара</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="two" aria-selected="false">Особенности</a>
@@ -151,7 +151,7 @@
                 <div class="sidebar-right">
                     <!-- Advanced search start -->
                     <div class="widget advanced-search d-none-992">
-                        <button class="btn btn-danger bomd btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Отправить сообщение</button>
+                        <button class="btn btn-danger bomd btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Добавить в корзину</button>
 
 
                         <br>
@@ -248,10 +248,10 @@
                                       <select class="form-control" id="sel1" name="customer_need">
                                         <option value="I'm interested in this">Меня это интересует</option>
                                         <option value="I'd like to know your best price for this">Я хотел бы знать вашу лучшую цену за это</option>
-                                        <option value="I'd like to Schedule a Test Drive">Я бы хотел запланировать тест-драйв</option>
+                                        {% comment %} <option value="I'd like to Schedule a Test Drive">Я бы хотел запланировать тест-драйв</option> {% endcomment %}
                                         <option value="Check home delivery options">Проверьте варианты доставки на дом</option>
-                                        <option value="I'd like a history report for this">Я бы хотел получить отчет по истории этого дела</option>
-                                        <option value="Discuss Financing">Обсудите финансирование</option>
+                                        {% comment %} <option value="I'd like a history report for this">Я бы хотел получить отчет по истории этого дела</option> {% endcomment %}
+                                        {% comment %} <option value="Discuss Financing">Обсудите финансирование</option> {% endcomment %}
                                         <option value="Others [Mention Below]">Другие [Упоминание ниже]</option>
                                       </select>
                                     </div>
@@ -260,13 +260,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                  <label for="name" class="col-form-label">Я живу в</label>
+                                  <label for="name" class="col-form-label">Я живу по адресу:</label>
                                   <div class="row">
                                     <div class="col">
-                                      <input type="text" name="city" class="form-control" placeholder="Город" required>
+                                      <input type="text" name="city" class="form-control" placeholder="Адрес" required>
                                     </div>
                                     <div class="col">
-                                      <input type="text" name="state" class="form-control" placeholder="Государство" required>
+                                      <input type="text" name="state" class="form-control" placeholder="Город" required>
                                     </div>
                                   </div>
                                 </div>
@@ -274,13 +274,13 @@
                                 <div class="form-group">
                                   <div class="row">
                                     <div class="col">
-                                        <label for="name" class="col-form-label">Вы можете связаться со мной по электронной почте по адресу</label>
+                                        <label for="name" class="col-form-label">Вы можете связаться со мной по почте</label>
                                       <input type="email" name="email" class="form-control" placeholder="Email"
                                        {% if user.is_authenticated %} value="{{user.email}}"  {% endif %} required>
                                     </div>
                                     <div class="col">
-                                        <label for="phone" class="col-form-label">или по сотовому в</label>
-                                      <input type="text" name="phone" placeholder="Номер телефона (необязательно)" class="form-control">
+                                        <label for="phone" class="col-form-label">Вы можете связаться со мной по сотовому телефону</label>
+                                      <input type="text" name="phone" placeholder="Номер телефона (обязательно)" class="form-control">
                                     </div>
                                   </div>
                                 </div>
@@ -290,7 +290,7 @@
                                   <textarea name="message" class="form-control" placeholder="Введите свое сообщение здесь (необязательно)"></textarea>
                                 </div>
                                 <hr>
-                                <input type="submit" value="Отправить" placeholder="Отправить" class="btn btn-block btn-dark">
+                                <input type="submit" value="Отправить" placeholder="Добавить" class="btn btn-block btn-dark">
                             </form>
                           </div>
                         </div>
@@ -323,6 +323,7 @@
                                 <li><a href="https:///" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
+
                     </div>
 
                 </div>

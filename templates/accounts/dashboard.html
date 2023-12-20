@@ -4,7 +4,6 @@
 {% block content %}
 
 <!-- Sub banner start -->
-<!-- Log on to codeastro.com for more projects -->
 <div class="sub-banner overview-bgi">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
@@ -17,7 +16,6 @@
     </div>
 </div>
 <!-- Sub Banner end -->
-<!-- Log on to codeastro.com for more projects -->
 
 <!--   Dashboard Start   -->
 
@@ -25,16 +23,17 @@
   {% include 'includes/messages.html' %}
 	<div class="main-title" style="text-align:left !important;">
             <h1>Добро пожаловать <span>{{user.first_name}} {{user.last_name}},</span></h1>
-            <p>Вот список автомобилей, о которых у вас есть вопросы:</p>
+            <p>Вот список товаров, о которых у вас есть вопросы:</p>
         </div>
         {% if inquiries %}
             <table class="table table-hover table-bordered table-striped">
               <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Имя машины</th>
+                <th scope="col">Имя товара</th>
                 <th scope="col">Локация</th>
                 <th scope="col">Действие</th>
+                {% comment %} <th scope="col">Действие</th> {% endcomment %}
               </tr>
               </thead>
               <tbody>
@@ -56,11 +55,25 @@
 
 
 
-                  <td><a href="{% url 'car_detail' inquiry.car_id %}" class="btn btn-dark">Посмотреть автомобиль</a></td>
+                  <td><a href="{% url 'car_detail' inquiry.car_id %}" class="btn btn-dark mr-2 ">Посмотреть товар</a></td>
+                  {% comment %} <td><a href="{% url 'car_detail' inquiry.car_id %}" class="btn btn-dark mr-2 ">Посмотреть товар</a></td> {% endcomment %}
+                  {% comment %} <td>{{inquiry.orders}}</td> {% endcomment %}
+                  {% comment %} <td> {% endcomment %}
+                    {% comment %} <form method="post" action="{% url 'delete_inquiry' inquiry.id %}"> {% endcomment %}
+                        {% comment %} {% csrf_token %} {% endcomment %}
+                        {% comment %} <button type="submit" class="btn btn-danger">Удалить</button> {% endcomment %}
+                    {% comment %} </form> {% endcomment %}
+                {% comment %} </td> {% endcomment %}
+                  
+                  
                 </tr>
+                
               {% endfor %}
               </tbody>
-            </table><!-- Log on to codeastro.com for more projects -->
+            </table>
+            <div class='d-flex justify-content-end'>
+              <a href="{% url 'myorder'  %}" class="btn btn-outline-success">Оплатить</a></td>
+            </div>
         {% else %}
         <div class="alert alert-primary" role="alert">
           <h4>У вас нет никаких запросов!!</h4>
